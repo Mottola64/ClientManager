@@ -11,12 +11,20 @@ class UsersController < ApplicationController
       if @user.save
         #login the user
         session[:user_id] = @user.id
-        redirect_to '/login'
+        redirect_to accounts_path
       else
         render :new
       end
     end
-  
+    
+    def show
+        @user = User.find_by_id(params[:id])
+    end
+
+    def edit
+        @user = User.find_by_id(params[:id])
+    end
+
   
     private
   

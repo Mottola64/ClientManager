@@ -1,0 +1,39 @@
+<%= form_for(@account) do |f| %>
+
+    <%= render partial: 'layouts/errors', locals: {object: @account} %>
+  
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  
+    <%= f.label :industry %>
+    <%= f.text_field :industry %>
+  
+    <%= f.label :tier %>
+    <%= f.select(:tier, [ "ODSS", "Mid-Market", "Enterprise" ]) %>
+  
+    <%= f.label :acv %>
+    <%= f.number_field :acv, min:0 %>
+  
+    <br><br>
+  
+    <%= f.label :strategist_id, "Select a strategist" %>
+    <%= f.collection_select :strategist_id, strategist.all, :id, :name, prompt: true %>
+    <br><br>
+  
+    <% if !params[:strategist_id] %>
+      <h4>Or add a new strategist:</h4>
+  
+      <%= f.fields_for :strategist do |v|%>
+          <%= v.label :name %>
+          <%= v.text_field :name %>
+  
+          <%= v.label :location %>
+          <%= v.text_field :location %>
+  
+      <% end %>
+    <% end %>
+  
+    <br><br>
+    <%= f.submit %>
+  
+  <% end %>

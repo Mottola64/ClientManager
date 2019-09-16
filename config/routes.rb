@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :teams
+  resources :strategists
   resources :deliverables
   resources :accounts
   root 'sessions#home'

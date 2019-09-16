@@ -1,0 +1,11 @@
+<h1>One Account</h1>
+
+<p> <%= @account.name %><br>
+    <%= @account.tier %><br>
+    $<%= @account.acv %><br>
+    <%= @account.strategist.name %> - <%=@account.strategist.location %></p>
+    
+<% if @account.user == current_user %>
+  <%= link_to "Edit Account", edit_account_path(@account) %>
+  <%= link_to "Delete Account", account_path(@account), method: :delete  %>
+<% end %>
