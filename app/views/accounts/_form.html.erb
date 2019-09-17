@@ -1,7 +1,5 @@
 <%= form_for(@account) do |f| %>
 
-    <%= render partial: 'layouts/errors', locals: {object: @account} %>
-  
     <%= f.label :name %>
     <%= f.text_field :name %>
   
@@ -16,8 +14,8 @@
   
     <br><br>
   
-    <%= f.label :strategist_id, "Select a strategist" %>
-    <%= f.collection_select :strategist_id, strategist.all, :id, :name, prompt: true %>
+    <%= f.label :strategist_id, "Select a Strategist" %>
+    <%= f.collection_select :strategist_id, Strategist.all, :id, :name, prompt: true %>
     <br><br>
   
     <% if !params[:strategist_id] %>

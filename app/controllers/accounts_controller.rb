@@ -1,8 +1,19 @@
 class AccountsController < ApplicationController
+    before_action :check_for_logged_in, except: [:index]
 
-    def new
-        @account = Account.new
+   def new
+    @strategist = Strategist.new
+    #check if it's nested & it's a proper id
+    if params[:strategist_id] && @strategist = Strategist.find_by_id(params[:strategist_id])
+      #nested route
+      @account = strategist.accounts.build #has_many
+    else
+      #unnested
+      @account = Account.new
+      @account.build_strategist  #belongs_to
     end
+  end
+
 
     def create
         @account = current_user.accounts.build(account_params)
@@ -15,7 +26,12 @@ class AccountsController < ApplicationController
     end
 
     def index
-    end
+        @accounts = Account.all
+        if params[:strategist_id] && strategist = strategist.find_by_id(params[:strategist_id])
+          #nested route
+          @accounts = strategist.accounts
+        end
+      end
 
     def show
         set_account
