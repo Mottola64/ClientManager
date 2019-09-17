@@ -2,7 +2,6 @@ class AccountsController < ApplicationController
     before_action :check_for_logged_in, except: [:index]
 
    def new
-    @strategist = Strategist.new
     #check if it's nested & it's a proper id
     if params[:strategist_id] && @strategist = Strategist.find_by_id(params[:strategist_id])
       #nested route
