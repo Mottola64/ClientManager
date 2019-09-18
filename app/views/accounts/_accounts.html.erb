@@ -1,6 +1,0 @@
-<% accounts.each do |account| %>
-    <p><%= link_to account.name, account_path(account) %> -
-      $<%= account.acv%> -
-      owner: <%= account.user.try(:username) %> -
-      strategist: <%= account.strategist.try(:name) %></p>
-<% end %>

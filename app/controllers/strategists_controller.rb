@@ -1,7 +1,10 @@
 class StrategistsController < ApplicationController
 
+    def new
+    end
+    
     def index
-        @strategists = Strategist.all.include(:users)
+        @strategists = Strategist.all
     end
 
     def show

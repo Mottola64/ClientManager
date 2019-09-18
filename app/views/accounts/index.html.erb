@@ -1,10 +1,12 @@
 <h2>Accounts</h2>
+      <% counter = 0 %>
        <% @accounts.each do |account| %>
-           <li><%= link_to account.name, account_path(account)%>  </li>
-           <%= strategist.name %> 
-           <%= account.tier %><br>
-
-           $<%= account.acv %><br><br>
+          <%= counter += 1 %>.
+           <%= link_to account.name, account_path(account)%>
+           <%= strategist.name if account.strategist%> 
+           Tier: <%= account.tier %><br>
+          Industry: <%= account.industry %><br><br>
+           ACV: $<%= account.acv %><br><br>
            
        <% end %>
 

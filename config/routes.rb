@@ -10,6 +10,11 @@ Rails.application.routes.draw do
   get '/logout' => 'sessions#destroy'
   resources :users
 
+  resources :users do
+    resources :accounts
+  end
+  
+
   resources :strategists do
     resources :accounts, only: [:new, :create, :index]
     resources :deliverables, only: [:new, :create, :index]

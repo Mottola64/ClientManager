@@ -6,10 +6,12 @@ class AccountsController < ApplicationController
     if params[:strategist_id] && @strategist = Strategist.find_by_id(params[:strategist_id])
       #nested route
       @account = strategist.accounts.build #has_many
+      @account.save
     else
       #unnested
       @account = Account.new
       @account.build_strategist  #belongs_to
+        @account.save
     end
   end
 
@@ -65,7 +67,7 @@ class AccountsController < ApplicationController
     end
     
     def account_params
-        params.require(:account).permit(:name, :tier, :acv, :industry, :strategist_id)
+        params.require(:account).permit(:name, :tier, :acv, :industry, :strategist_id, strategist_attributes: [:name, :location])
     end
 
 end

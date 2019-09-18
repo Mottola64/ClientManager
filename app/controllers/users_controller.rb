@@ -2,7 +2,7 @@ class UsersController < ApplicationController
 
     #loading the signup form
     def new
-      @user = User.new
+      @user = User.new 
     end
   
     #signup
@@ -17,15 +17,6 @@ class UsersController < ApplicationController
       end
     end
     
-    def show
-        @user = User.find_by_id(params[:id])
-    end
-
-    def edit
-        @user = User.find_by_id(params[:id])
-    end
-
-  
     private
   
     def user_params
