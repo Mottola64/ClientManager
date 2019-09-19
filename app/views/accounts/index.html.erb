@@ -1,12 +1,14 @@
 <h2>Accounts</h2>
+
       <% counter = 0 %>
        <% @accounts.each do |account| %>
           <%= counter += 1 %>.
            <%= link_to account.name, account_path(account)%>
-           <%= strategist.name if account.strategist%> 
+           
            Tier: <%= account.tier %><br>
-          Industry: <%= account.industry %><br><br>
-           ACV: $<%= account.acv %><br><br>
+          Industry: <%= account.industry %><br>
+           ACV: $<%= account.acv %><br>
+           Owner: <%= account.user.username.capitalize %><br><br>
            
        <% end %>
 

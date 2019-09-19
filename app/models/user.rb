@@ -4,6 +4,6 @@ class User < ApplicationRecord
     validates :username, :email, uniqueness: true
 
     has_many :accounts
-    has_many :strategists, through: :accounts
+    has_many :deliverables, through: :accounts
 
 end

@@ -11,29 +11,12 @@
     <%= f.label :tier %>
     <%= f.select(:tier, [ "ODSS", "Mid-Market", "Enterprise" ]) %>
   
+    <%= f.label :strategist %>
+    <%= f.text_field :strategist %>
+
     <%= f.label :acv %>
     <%= f.number_field :acv, min:0 %>
   
-    <br><br>
-  
-    <%= f.label :strategist_id, "Select a Strategist" %>
-    <%= f.collection_select :strategist_id, Strategist.all, :id, :name, prompt: true %>
-    <br><br>
-  
-    <% if !params[:strategist_id] %>
-      <h4>Or add a new strategist:</h4>
-  
-      <%= f.fields_for :strategist do |v|%>
-          <%= v.label :name %>
-          <%= v.text_field :name %>
-  
-          <%= v.label :location %>
-          <%= v.text_field :location %>
-  
-      <% end %>
-    <% end %>
-  
-    <br><br>
     <%= f.submit %>
   
   <% end %>

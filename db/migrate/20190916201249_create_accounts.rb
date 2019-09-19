@@ -5,6 +5,7 @@ class CreateAccounts < ActiveRecord::Migration[5.2]
       t.string :tier
       t.integer :acv
       t.string :industry
+      t.string :strategist
 
       t.timestamps
     end

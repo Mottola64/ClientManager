@@ -1,0 +1,16 @@
+render 'accounts/form'
+
+<%= f.fields_for :deliverables do |d| %><br>
+    <%= d.label :type %>
+    <%= d.text_field :type %><br>
+    
+    <%= d.label :description %>
+    <%= d.text_field :description %>
+
+    <%= d.label :date_assigned %>
+    <%= d.date_field :date_assigned %>
+
+    <%= d.label :due_date %>
+    <%= d.date_field :due_date %>
+
+    <% end %>

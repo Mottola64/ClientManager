@@ -1,9 +1,8 @@
 class Account < ApplicationRecord
-    validates :name, :tier, :industry, :acv, presence: true
-
     belongs_to :user
-    belongs_to :strategist, optional: true
-
     has_many :deliverables
-    
-end
+    #accepts_nested_attributes_for :deliverables
+    validates :name, :tier, :industry, :acv, presence: true
+    validates :deliverables, presence: optional
+    #validates_associated :deliverables
+ end

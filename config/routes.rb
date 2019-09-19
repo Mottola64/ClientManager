@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :strategists
   resources :deliverables
-  resources :accounts
   root 'sessions#home'
   get '/signup' => 'users#new'
   get '/login' => 'sessions#new'
@@ -10,13 +8,7 @@ Rails.application.routes.draw do
   get '/logout' => 'sessions#destroy'
   resources :users
 
-  resources :users do
-    resources :accounts
-  end
-  
-
-  resources :strategists do
-    resources :accounts, only: [:new, :create, :index]
+  resources :accounts do
     resources :deliverables, only: [:new, :create, :index]
   end
 

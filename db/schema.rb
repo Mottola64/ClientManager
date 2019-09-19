@@ -17,21 +17,17 @@ ActiveRecord::Schema.define(version: 2019_09_16_210819) do
     t.string "tier"
     t.integer "acv"
     t.string "industry"
+    t.string "strategist"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
-    t.integer "strategist_id"
   end
 
   create_table "deliverables", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "strategists", force: :cascade do |t|
-    t.string "name"
-    t.string "location"
+    t.string "type"
+    t.string "description"
+    t.datetime "date_assigned"
+    t.datetime "due_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

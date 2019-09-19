@@ -1,44 +1,37 @@
 class AccountsController < ApplicationController
     before_action :check_for_logged_in, except: [:index]
 
-   def new
-    #check if it's nested & it's a proper id
-    if params[:strategist_id] && @strategist = Strategist.find_by_id(params[:strategist_id])
-      #nested route
-      @account = strategist.accounts.build #has_many
-      @account.save
-    else
-      #unnested
-      @account = Account.new
-      @account.build_strategist  #belongs_to
-        @account.save
-    end
-  end
-
-
-    def create
-        @account = current_user.accounts.build(account_params)
-        if @account.save
-            redirect_to account_path(@account)
-        else
-            @account.build_strategist unless @account.strategist
-            render :new
-        end
+    def edit
+        set_account
     end
 
     def index
         @accounts = Account.all
-        if params[:strategist_id] && strategist = strategist.find_by_id(params[:strategist_id])
-          #nested route
-          @accounts = strategist.accounts
-        end
-      end
-
-    def show
-        set_account
+        @account = Account.find_by(params[:id])
     end
 
-    def edit
+    def new
+        if params[:user_id] && user = User.find_by_id(params[:user_id])
+            @account = user.accounts.build
+        else
+        @account = Account.new
+        @account.build_user
+        end
+    end
+
+   
+    
+    def create
+        @account = current_user.accounts.new account_params
+        if @account.save
+            redirect_to @account
+        else
+            render action: :new
+        end
+
+    end
+
+    def show
         set_account
     end
 
@@ -67,7 +60,10 @@ class AccountsController < ApplicationController
     end
     
     def account_params
-        params.require(:account).permit(:name, :tier, :acv, :industry, :strategist_id, strategist_attributes: [:name, :location])
+        params.require(:account).permit(:name, :tier, :acv, :industry, :strategist)
     end
 
 end
+
+
+#deliverable_attributes: [:type, :description, :date_assigned, :due_date])
