@@ -1,6 +1,6 @@
 <%= form_for(@account) do |f| %>
 
-    <%= f.hidden_field :user_id %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
     
     <%= f.label :name %>
     <%= f.text_field :name %>
@@ -16,7 +16,26 @@
 
     <%= f.label :acv %>
     <%= f.number_field :acv, min:0 %>
+
+    
+
+    <%= f.fields_for :deliverables do |d| %><br>
+      <%= d.label :type %>
+      <%= d.text_field :type %><br>
+      
+      <%= d.label :description %>
+      <%= d.text_field :description %><br>
   
-    <%= f.submit %>
+      <%= d.label :date_assigned %>
+      <%= d.date_field :date_assigned %><br>
+  
+      <%= d.label :due_date %>
+      <%= d.date_field :due_date %><br>
+  
+      <% end %>
+  
+  <% end %>
+
+    <%= f.submit 'Submit' %><br>
   
   <% end %>

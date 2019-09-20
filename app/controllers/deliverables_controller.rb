@@ -17,14 +17,22 @@ class DeliverablesController < ApplicationController
         end
     end
 
-    def create
-        @deliverable = current_user.accounts.deliverables.new deliverable_params
-        if @deliverable.save
-            redirect_to @deliverable
-        else
-            render action: :new
-        end
+    # def create
+    #     @deliverable = current_user.accounts.Deliverable.new(deliverable_params)
+    #     if @deliverable.save
+    #         redirect_to @deliverable
+    #     else
+    #         render action: :new
+    #     end
 
+    #end
+
+    def create
+        binding.pry
+        @deliverable = Deliverable.new(deliverable_params)
+        @account = @deliverable.account
+        return render :new unless @deliverable.save
+        redirect_to account_path(@account)
     end
 
     def show

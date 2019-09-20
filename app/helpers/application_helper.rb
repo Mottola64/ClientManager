@@ -7,9 +7,5 @@ module ApplicationHelper
         !!session[:user_id]
       end
 
-      def current_user_accounts
-        accounts = Account.all
-        current_user.accounts
-        
-      end
+  
 end

@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 2019_09_16_210819) do
   end
 
   create_table "deliverables", force: :cascade do |t|
-    t.string "type"
+    t.string "report_type"
     t.string "description"
     t.datetime "date_assigned"
     t.datetime "due_date"
