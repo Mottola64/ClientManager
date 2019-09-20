@@ -5,6 +5,7 @@ class CreateDeliverables < ActiveRecord::Migration[5.2]
       t.string :description
       t.datetime :date_assigned
       t.datetime :due_date
+      t.string :account_id
 
       t.timestamps
     end

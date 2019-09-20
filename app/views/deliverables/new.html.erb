@@ -1,4 +1,6 @@
-render 'accounts/form'
+<h1>Add A Deliverable</h1>
+
+<%= form_for(@deliverable) do |f| %>
 
 <%= f.fields_for :deliverables do |d| %><br>
     <%= d.label :type %>
@@ -13,4 +15,7 @@ render 'accounts/form'
     <%= d.label :due_date %>
     <%= d.date_field :due_date %>
 
+    <%= d.submit %>
     <% end %>
+
+<% end %>

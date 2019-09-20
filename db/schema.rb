@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 2019_09_16_210819) do
     t.string "description"
     t.datetime "date_assigned"
     t.datetime "due_date"
+    t.string "account_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

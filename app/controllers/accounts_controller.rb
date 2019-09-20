@@ -8,6 +8,7 @@ class AccountsController < ApplicationController
     def index
         @accounts = Account.all
         @account = Account.find_by(params[:id])
+        @deliverables = Deliverable.all
     end
 
     def new
@@ -19,12 +20,11 @@ class AccountsController < ApplicationController
         end
     end
 
-   
-    
     def create
+
         @account = current_user.accounts.new account_params
         if @account.save
-            redirect_to @account
+            redirect_to account_path(@account)
         else
             render action: :new
         end
@@ -64,6 +64,3 @@ class AccountsController < ApplicationController
     end
 
 end
-
-
-#deliverable_attributes: [:type, :description, :date_assigned, :due_date])
