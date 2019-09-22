@@ -9,26 +9,15 @@ class DeliverablesController < ApplicationController
     end
 
     def new
-        if params[:account_id] && account = Account.find_by_id(params[:account_id])
-            @deliverable = account.deliverables.build
+        if params[:account_id] && !Account.exists?(params[:account_id])
+            redirect_to account_path(current_user)
         else
-        @deliverable = Deliverable.new
-        @deliverable.build_account
+        @deliverable = Deliverable.new(account_id: params[:account_id])
+        @account = Account.find(params[:account_id])
         end
     end
 
-    # def create
-    #     @deliverable = current_user.accounts.Deliverable.new(deliverable_params)
-    #     if @deliverable.save
-    #         redirect_to @deliverable
-    #     else
-    #         render action: :new
-    #     end
-
-    #end
-
     def create
-        binding.pry
         @deliverable = Deliverable.new(deliverable_params)
         @account = @deliverable.account
         return render :new unless @deliverable.save

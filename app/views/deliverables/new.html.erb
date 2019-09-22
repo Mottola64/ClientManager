@@ -1,0 +1,19 @@
+<%= form_for @deliverable, url: account_deliverable_path(@account) do |d| %>
+
+    <%= d.hidden_field :account_id, value: @account.id %>
+
+
+    <%= d.label :report_type %>
+    <%= d.text_field :report_type %><br>
+    
+    <%= d.label :description %>
+    <%= d.text_field :description %><br>
+
+    <%= d.label :date_assigned %>
+    <%= d.date_field :date_assigned %><br>
+
+    <%= d.label :due_date %>
+    <%= d.date_field :due_date %><br>
+
+    <%= d.submit %>
+    <% end %>

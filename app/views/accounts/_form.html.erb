@@ -3,25 +3,25 @@
     <%= f.hidden_field :user_id, value: current_user.id %>
     
     <%= f.label :name %>
-    <%= f.text_field :name %>
+    <%= f.text_field :name %><br>
   
     <%= f.label :industry %>
-    <%= f.text_field :industry %>
+    <%= f.text_field :industry %><br>
   
     <%= f.label :tier %>
-    <%= f.select(:tier, [ "ODSS", "Mid-Market", "Enterprise" ]) %>
+    <%= f.select(:tier, [ "ODSS", "Mid-Market", "Enterprise" ]) %><br>
   
     <%= f.label :strategist %>
-    <%= f.text_field :strategist %>
+    <%= f.text_field :strategist %><br>
 
     <%= f.label :acv %>
-    <%= f.number_field :acv, min:0 %>
+    <%= f.number_field :acv, min:0 %><br>
 
-    
+    <% if is_edit %>
 
     <%= f.fields_for :deliverables do |d| %><br>
-      <%= d.label :type %>
-      <%= d.text_field :type %><br>
+      <%= d.label :report_type %>
+      <%= d.text_field :report_type %><br>
       
       <%= d.label :description %>
       <%= d.text_field :description %><br>
