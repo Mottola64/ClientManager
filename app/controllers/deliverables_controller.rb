@@ -31,7 +31,7 @@ class DeliverablesController < ApplicationController
     def update
         set_deliverable
         if @deliverable.update(deliverable_params)
-            redirect_to deliverable_path(@deliverable)
+            redirect_to account_deliverable_path(@account, @deliverable)
         else
             render :edit
         end
@@ -53,7 +53,7 @@ class DeliverablesController < ApplicationController
     end
     
     def deliverable_params
-        params.require(:deliverable).permit(:type, :description, :date_assigned, :due_date)
+        params.require(:deliverable).permit(:report_type, :description, :date_assigned, :due_date, :account_id)
     end
 
 end

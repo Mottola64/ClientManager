@@ -7,14 +7,18 @@
     Account Strategist: <%= @account.strategist %><br><br>
 <% if @account.user == current_user %>
   <%= link_to "Edit Account", edit_account_path(@account) %><br><br>
-  <%= link_to "Delete Account", account_path(@account), method: :delete  %><br>
+  <%= link_to "Delete Account", account_path(@account), method: :delete  %><br><br>
   <%= link_to "Add Deliverable", new_account_deliverable_path(@account), method: :get  %><br>
 <% end %>
+<div>
+<% counter = 0 %>
 
+   
        <% @account.deliverables.each do |account|%>
-
-           Tier: <%= account.report_type %><br>
-          Industry: <%= account.description %><br>
-           ACV: $<%= account.date_assigned %><br>
-           Owner: <%= account.due_date %><br><br>
+  <%= link_to "Edit Deliverable", edit_account_deliverable_path(@account), method: :get  %><br><br>
+  <%= counter += 1 %>. 
+           Deliverable Type: <%= account.report_type.capitalize %><br>
+          Description: <%= account.description %><br>
+           Date Assigned: <%= account.date_assigned.strftime("%m/%d/%Y") %><br>
+           Due Date: <%= account.due_date.strftime("%m/%d/%Y") %><br><br>
            <% end %>

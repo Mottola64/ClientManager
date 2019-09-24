@@ -10,9 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_16_210819) do
+ActiveRecord::Schema.define(version: 2019_09_16_201445) do
 
   create_table "accounts", force: :cascade do |t|
+    t.integer "user_id"
     t.string "name"
     t.string "tier"
     t.integer "acv"
@@ -20,17 +21,18 @@ ActiveRecord::Schema.define(version: 2019_09_16_210819) do
     t.string "strategist"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id"
+    t.index ["user_id"], name: "index_accounts_on_user_id"
   end
 
   create_table "deliverables", force: :cascade do |t|
+    t.integer "account_id"
     t.string "report_type"
     t.string "description"
     t.datetime "date_assigned"
     t.datetime "due_date"
-    t.string "account_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["account_id"], name: "index_deliverables_on_account_id"
   end
 
   create_table "users", force: :cascade do |t|

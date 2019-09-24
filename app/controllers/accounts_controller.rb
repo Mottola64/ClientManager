@@ -8,7 +8,7 @@ class AccountsController < ApplicationController
     def index
         @accounts = Account.all
         @account = Account.find_by(params[:id])
-        @deliverables = Deliverable.all
+        #@deliverables = Deliverable.all
     end
 
     def new

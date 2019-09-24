@@ -1,6 +1,6 @@
-<%= form_for @deliverable, url: account_deliverable_path(@account) do |d| %>
+<%= form_for @deliverable, url: account_deliverables_path(:account_id) do |d| %>
 
-    <%= d.hidden_field :account_id, value: @account.id %>
+    <%= d.hidden_field :account_id, value: @deliverable.account.id %>
 
 
     <%= d.label :report_type %>
