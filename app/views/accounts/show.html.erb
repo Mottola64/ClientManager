@@ -23,7 +23,7 @@
 <div class="ui grey segment">
 <h3>Deliverables Sorted By Due Date</h3>
 <ul>
-    <% sort_deliverables.each do |del| %>
+    <% @account.deliverables.sorted_by_due_date.each do |del| %>
         <li><%= del.report_type %></li>
                         
     <% end %>
@@ -32,15 +32,15 @@
 
 
 <div class ='ui grey segment'>
-       <% @account.deliverables.each do |account|%>
+       <% @account.deliverables.sorted_by_due_date.each do |deliverable|%>
         <div class= 'ui button'>
-        <%= link_to "Edit Deliverable", edit_account_deliverable_path(@account), method: :get  %><br>
+        <%= link_to "Edit Deliverable", edit_account_deliverable_path(@account.id, deliverable), method: :get  %><br>
         </div>
   
-           <h5>Deliverable Type: <%= account.report_type.capitalize %></h5>
-            <h5>Description: <%= account.description %></h5>
-           <h5>Date Assigned: <%= account.date_assigned.strftime("%m/%d/%Y") %></h5>
-           <h5>Due Date: <%= account.due_date.strftime("%m/%d/%Y") %></h5>
+           <h5>Deliverable Type: <%= deliverable.report_type.capitalize %></h5>
+            <h5>Description: <%= deliverable.description %></h5>
+           <h5>Date Assigned: <%= deliverable.date_assigned.strftime("%m/%d/%Y") %></h5>
+           <h5>Due Date: <%= deliverable.due_date.strftime("%m/%d/%Y") %></h5>
            
            <% end %>
            </div>
