@@ -31,7 +31,7 @@ class DeliverablesController < ApplicationController
     def update
         set_deliverable
         if @deliverable.update(deliverable_params)
-            redirect_to account_deliverable_path(@account, @deliverable)
+            redirect_to accounts_path
         else
             render :edit
         end
@@ -57,4 +57,3 @@ class DeliverablesController < ApplicationController
     end
 
 end
-

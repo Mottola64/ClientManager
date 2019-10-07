@@ -2,7 +2,7 @@
 
 <div class='ui grey segment'>
 
-<%= form_for @deliverable, url: account_deliverables_path(:account_id) do |d| %>
+<%= form_for @deliverable, url: account_deliverable_path(@deliverable.account.id) do |d| %>
 
     <%= d.hidden_field :account_id, value: @deliverable.account.id %>
 

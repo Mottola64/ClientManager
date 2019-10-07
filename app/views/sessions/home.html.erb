@@ -1,15 +1,14 @@
 <html>
-
-body { display: center
-}
+<align: center>
 <h1>Welcome</h1>
 <div class='ui grey segment'>
 <div class= 'ui button'>
 <%= link_to "Sign up", signup_path %><br>
 </div>
-Or
 <div class = 'ui button'>
 <%= link_to "Log in", login_path %>
 </div>
-
+<div class='ui button'>
+<%= link_to('Log in with Facebook!', '/auth/facebook') %>
+</div>
 </html>

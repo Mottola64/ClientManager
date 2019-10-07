@@ -6,8 +6,12 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
   post '/logout' => 'sessions#destroy'
+  get '/auth/facebook/callback' => 'sessions#fbcreate'
 
-  resources :users
+  resources :users do
+    resources :accounts
+  end
+  
   
   resources :accounts do
     resources :deliverables
