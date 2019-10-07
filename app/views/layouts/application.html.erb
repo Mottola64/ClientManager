@@ -1,16 +1,41 @@
 <!DOCTYPE html>
 <html>
-<div style="text-align:center;">
   <head>
-    <title>Orchestra</title>
+    <title>Account Deliverables Tracker</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-   
+
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
   </head>
 
+  <h1>Account Deliverables Tracker</h1>
+
   <body>
-    <%= yield %>
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="ui blue inverted menu">        
+        <%= link_to "Home", root_path, class: "item" %>      
+        <% if logged_in? %>                  
+            <%= link_to "Sign Out", logout_path, class: "item", method: "get" %>
+        <% else%>
+            <a class="item" href="<%= new_user_url %>"/>Sign Up</a>
+            <a class="item" href="<%= login_url %>"/>Sign In</a>
+        <% end %>
+        </div>      
+      </div>
+    </div>
+    <div align='left'>
+      <% if flash[:alert] %>
+          <%= flash[:alert] %>
+      <% end %>
+    </div>
+    <br/>
+    <br/>   
+    <div class="ui container" role="main">   
+      <%= yield %>
+    </div>   
   </body>
 </html>

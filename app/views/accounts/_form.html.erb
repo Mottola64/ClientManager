@@ -1,36 +1,39 @@
+<div class= 'ui grey segment'>
+<h3>Account:</h3>
 <%= form_for(@account) do |f| %>
 
     <%= f.hidden_field :user_id, value: current_user.id %>
     
     <%= f.label :name %>
-    <%= f.text_field :name %><br>
+    <%= f.text_field :name %><br><br>
   
     <%= f.label :industry %>
-    <%= f.text_field :industry %><br>
+    <%= f.text_field :industry %><br><br>
   
     <%= f.label :tier %>
-    <%= f.select(:tier, [ "ODSS", "Mid-Market", "Enterprise" ]) %><br>
+    <%= f.select(:tier, [ "ODSS", "Mid-Market", "Enterprise" ]) %><br><br>
   
     <%= f.label :strategist %>
-    <%= f.text_field :strategist %><br>
+    <%= f.text_field :strategist %><br><br>
 
     <%= f.label :acv %>
-    <%= f.number_field :acv, min:0 %><br>
+    <%= f.number_field :acv, min:0 %><br><br>
 
     <% if is_edit %>
 
+    <h3>Deliverable:</h3>
     <%= f.fields_for :deliverables do |d| %><br>
       <%= d.label :report_type %>
-      <%= d.text_field :report_type %><br>
+      <%= d.text_field :report_type %><br><br>
       
       <%= d.label :description %>
-      <%= d.text_field :description %><br>
+      <%= d.text_field :description %><br><br>
   
       <%= d.label :date_assigned %>
-      <%= d.date_field :date_assigned %><br>
+      <%= d.date_field :date_assigned %><br><br>
   
       <%= d.label :due_date %>
-      <%= d.date_field :due_date %><br>
+      <%= d.date_field :due_date %><br><br>
   
       <% end %>
   
@@ -39,3 +42,4 @@
     <%= f.submit 'Submit' %><br>
   
   <% end %>
+  </div>

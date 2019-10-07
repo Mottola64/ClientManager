@@ -2,14 +2,15 @@
 
       <% counter = 0 %>
        <% @accounts.each do |account| %>
+        <div class='ui blue segment'>
           <%= counter += 1 %>.
            <%= link_to account.name, account_path(account)%>
-           
+          
            Tier: <%= account.tier %><br>
           Industry: <%= account.industry %><br>
            ACV: $<%= account.acv %><br>
            Owner: <%= account.user.username.capitalize %><br><br>
-           
+           </div>
        <% end %>
 
 

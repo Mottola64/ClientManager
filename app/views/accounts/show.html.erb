@@ -1,24 +1,34 @@
 <h1>Account</h1>
 
-<p> <%= @account.name %><br><br>
-    Account Name: <%= @account.tier %><br><br>
+<h3><%= @account.name %></h3><br>
+<div class= 'ui grey segment'>
+    Account Tier: <%= @account.tier %><br><br>
     Account ACV: $<%= @account.acv %><br><br>
     Account Owner: <%= @account.user.username %><br><br>
     Account Strategist: <%= @account.strategist %><br><br>
 <% if @account.user == current_user %>
-  <%= link_to "Edit Account", edit_account_path(@account) %><br><br>
-  <%= link_to "Delete Account", account_path(@account), method: :delete  %><br><br>
+  <div class= 'ui button'>
+  <%= link_to "Edit Account", edit_account_path(@account) %><br>
+  </div>
+  <div class= 'ui button'>
+  <%= link_to "Delete Account", account_path(@account), method: :delete  %><br>
+  </div>
+  <div class= 'ui button'>
   <%= link_to "Add Deliverable", new_account_deliverable_path(@account), method: :get  %><br>
-<% end %>
-<div>
+  </div>
+  <% end %>
+</div>
 <% counter = 0 %>
 
-   
+<div class ='ui grey segment'>
        <% @account.deliverables.each do |account|%>
+        
+        <div class= 'ui button'>
   <%= link_to "Edit Deliverable", edit_account_deliverable_path(@account), method: :get  %><br><br>
-  <%= counter += 1 %>. 
-           Deliverable Type: <%= account.report_type.capitalize %><br>
-          Description: <%= account.description %><br>
-           Date Assigned: <%= account.date_assigned.strftime("%m/%d/%Y") %><br>
-           Due Date: <%= account.due_date.strftime("%m/%d/%Y") %><br><br>
+  <h5><%= counter += 1 %>.</h5> 
+           <h5>Deliverable Type: <%= account.report_type.capitalize %></h5><br>
+            <h5>Description: <%= account.description %></h5><br>
+           <h5>Date Assigned: <%= account.date_assigned.strftime("%m/%d/%Y") %></h5><br>
+           <h5>Due Date: <%= account.due_date.strftime("%m/%d/%Y") %></h5><br>
+           </div>
            <% end %>
